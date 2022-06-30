@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/PayingNowFragment"
+        android:icon="@drawable/playing_now_icon"
+        android:title="Playing Now">
+    </item>
+
+    <item
+        android:id="@+id/UpcomingFragment"
+        android:icon="@drawable/upcoming_movies"
+        android:title="Upcoming">
+    </item>
+
+    <item
+        android:id="@+id/PopularFragment"
+        android:icon="@drawable/popular_movies"
+        android:title="Popular">
+    </item>
+
+</menu>

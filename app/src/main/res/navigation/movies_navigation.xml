@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/PayingNowFragment"
     android:id="@+id/movies_navigation">
+
+    <fragment
+        android:id="@+id/PayingNowFragment"
+        android:name="com.example.moviesappcat25.ui.PlayingNowMoviesFragment"
+        android:label="PLAYING NOW MOVIES"
+        tools:layout="@layout/fragment_playing_now_movies">
+
+        <action
+            android:id="@+id/action_PayingNowFragment_to_DetailsFragment"
+            app:destination="@id/DetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/UpcomingFragment"
+        android:name="com.example.moviesappcat25.ui.UpcomingMoviesFragment"
+        android:label="UPCOMING MOVIES"
+        tools:layout="@layout/fragment_upcoming_movies">
+
+        <action
+            android:id="@+id/action_UpcomingFragment_to_DetailsFragment"
+            app:destination="@id/DetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PopularFragment"
+        android:name="com.example.moviesappcat25.ui.PopularMoviesFragment"
+        android:label="POPULAR MOVIES"
+        tools:layout="@layout/fragment_popular_movies">
+
+        <action
+            android:id="@+id/action_PopularFragment_to_DetailsFragment"
+            app:destination="@id/DetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailsFragment"
+        android:name="com.example.moviesappcat25.ui.MovieDetailsFragment"
+        android:label="DETAILS"
+        tools:layout="@layout/fragment_movie_details">
+
+    </fragment>
 
 </navigation>
