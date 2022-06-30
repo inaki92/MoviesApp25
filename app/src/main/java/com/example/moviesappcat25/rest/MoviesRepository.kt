@@ -11,17 +11,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
 
 interface MoviesRepository {
     fun getPlayingNowMovies(page: Int = 1): Flow<UIState>
     suspend fun getUpcomingMovies(page: Int = 1): Response<MovieResponse>
     fun getPopularMovies(page: Int = 1): Flow<UIState>
-    suspend fun getMovieDetails(movieId: Int): UIState
+    suspend fun getMovieDetails(movieId: Int, coroutineScope: CoroutineScope): UIState
 }
 
-class MoviesRepositoryImpl(
+class MoviesRepositoryImpl @Inject constructor(
     private val moviesApi: MoviesService
 ) : MoviesRepository {
 
@@ -64,8 +64,8 @@ class MoviesRepositoryImpl(
             }
         }
 
-    override suspend fun getMovieDetails(movieId: Int): UIState {
-        val uiState = CoroutineScope(Dispatchers.IO).async {
+    override suspend fun getMovieDetails(movieId: Int, coroutineScope: CoroutineScope): UIState {
+        val uiState = coroutineScope.async {
             try {
                 val response = moviesApi.getMovieDetailsById(movieId).await()
                 if (response.isSuccessful) {
